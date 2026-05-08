@@ -4,11 +4,24 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Yum Lab — Real Cooking Skills for Kids</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<!-- Approximating Maxi Round with Nunito (rounded, friendly header font) & DM Sans for body -->
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
 <style>
+/* ── Custom fonts ───────────────────────────────── */
+@font-face {
+  font-family: 'Maxi Round';
+  src: url('fonts/ABCMaxiRound-Regular-Trial.otf') format('opentype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apercu';
+  src: url('fonts/Apercu.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── Brand tokens ───────────────────────────────── */
 :root {
   --yum-dark-green: #2B4A3A;
@@ -31,21 +44,21 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'DM Sans',sans-serif;
+  font-family:'Apercu',sans-serif;
   background:var(--yum-cream);
   color:var(--yum-text);
   overflow-x:hidden;
 }
 
 /* ── Typography helpers ─────────────────────────── */
-.display{font-family:'Nunito',sans-serif;font-weight:900;line-height:1.05;letter-spacing:-0.02em}
+.display{font-family:'Maxi Round',sans-serif;font-weight:900;line-height:1.05;letter-spacing:-0.02em}
 .h1{font-size:clamp(2.8rem,6vw,5.5rem)}
 .h2{font-size:clamp(2rem,4vw,3.5rem);font-weight:800}
 .h3{font-size:clamp(1.3rem,2.5vw,2rem);font-weight:800}
 .h4{font-size:1.15rem;font-weight:700}
 .body-lg{font-size:1.15rem;line-height:1.7;color:var(--yum-muted)}
 .body{font-size:1rem;line-height:1.65;color:var(--yum-muted)}
-.label{font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.label{font-family:'Maxi Round',sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
 
 /* ── Layout helpers ─────────────────────────────── */
 .container{max-width:1140px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
@@ -68,15 +81,15 @@ nav{
   width:36px;height:36px;border-radius:10px;
   background:var(--yum-dark-green);
   display:grid;place-items:center;
-  font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:var(--yum-yellow);
+  font-family:'Maxi Round',sans-serif;font-size:1.1rem;font-weight:900;color:var(--yum-yellow);
 }
-.nav-logo-text{font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:900;color:var(--yum-dark-green)}
+.nav-logo-text{font-family:'Maxi Round',sans-serif;font-size:1.2rem;font-weight:900;color:var(--yum-dark-green)}
 .nav-links{display:flex;align-items:center;gap:1.75rem}
 .nav-links a{text-decoration:none;font-size:.9rem;font-weight:600;color:var(--yum-muted);transition:color .2s}
 .nav-links a:hover{color:var(--yum-dark-green)}
 .nav-cta{
   background:var(--yum-dark-green);color:var(--yum-yellow);
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;
+  font-family:'Maxi Round',sans-serif;font-weight:800;font-size:.9rem;
   padding:.55rem 1.4rem;border-radius:var(--radius-pill);
   text-decoration:none;transition:opacity .2s;
 }
@@ -86,7 +99,7 @@ nav{
 .pill{
   display:inline-flex;align-items:center;gap:.4rem;
   padding:.35rem 1rem;border-radius:var(--radius-pill);
-  font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:800;
+  font-family:'Maxi Round',sans-serif;font-size:.8rem;font-weight:800;
   letter-spacing:.06em;
 }
 .pill-green{background:var(--yum-light-green);color:var(--yum-dark-green)}
@@ -125,7 +138,7 @@ nav{
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
 .btn-primary{
   background:var(--yum-yellow);color:var(--yum-dark-green);
-  font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;
+  font-family:'Maxi Round',sans-serif;font-weight:900;font-size:1rem;
   padding:.8rem 2rem;border-radius:var(--radius-pill);text-decoration:none;
   transition:transform .2s,box-shadow .2s;
   box-shadow:0 4px 20px rgba(245,200,66,.35);
@@ -133,7 +146,7 @@ nav{
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,200,66,.45)}
 .btn-ghost{
   background:transparent;color:var(--yum-white);
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;
+  font-family:'Maxi Round',sans-serif;font-weight:800;font-size:1rem;
   padding:.8rem 2rem;border-radius:var(--radius-pill);text-decoration:none;
   border:2px solid rgba(255,255,255,.25);transition:border-color .2s;
 }
@@ -163,7 +176,7 @@ nav{
   animation:ticker 28s linear infinite;
 }
 .ticker-track span{
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;
+  font-family:'Maxi Round',sans-serif;font-weight:800;font-size:.95rem;
   color:var(--yum-dark-green);white-space:nowrap;
   padding:0 2rem;
 }
@@ -192,7 +205,7 @@ nav{
   display:grid;place-items:center;font-size:1.6rem;
   margin-bottom:1.25rem;
 }
-.why-card h3{font-size:1.1rem;font-weight:800;margin-bottom:.6rem;font-family:'Nunito',sans-serif}
+.why-card h3{font-size:1.1rem;font-weight:800;margin-bottom:.6rem;font-family:'Maxi Round',sans-serif}
 .why-card p{font-size:.95rem;line-height:1.65;color:var(--yum-muted)}
 .stat-row{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -202,7 +215,7 @@ nav{
   background:var(--yum-dark-green);color:var(--yum-white);
   border-radius:var(--radius-card);padding:2rem 1.5rem;text-align:center;
 }
-.stat-box .num{font-family:'Nunito',sans-serif;font-size:3rem;font-weight:900;color:var(--yum-yellow);line-height:1}
+.stat-box .num{font-family:'Maxi Round',sans-serif;font-size:3rem;font-weight:900;color:var(--yum-yellow);line-height:1}
 .stat-box p{font-size:.9rem;color:rgba(255,255,255,.65);margin-top:.5rem}
 
 /* ═══════════════════════════════════════════════════
@@ -233,7 +246,7 @@ nav{
 .step-num{
   width:30px;height:30px;border-radius:50%;
   background:var(--yum-dark-green);color:var(--yum-yellow);
-  font-family:'Nunito',sans-serif;font-weight:900;font-size:.85rem;
+  font-family:'Maxi Round',sans-serif;font-weight:900;font-size:.85rem;
   display:grid;place-items:center;flex-shrink:0;
 }
 .step p{font-size:.95rem;line-height:1.55;margin:0}
@@ -276,7 +289,7 @@ nav{
 }
 .ai-card:hover{background:rgba(255,255,255,.12);transform:translateY(-3px)}
 .ai-icon{font-size:2.2rem;margin-bottom:1rem}
-.ai-card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:.6rem;color:var(--yum-white)}
+.ai-card h3{font-family:'Maxi Round',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:.6rem;color:var(--yum-white)}
 .ai-card p{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.6}
 
 /* ═══════════════════════════════════════════════════
@@ -310,7 +323,7 @@ nav{
   width:100%;aspect-ratio:390/844;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:.5rem;
-  font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:800;
+  font-family:'Maxi Round',sans-serif;font-size:.8rem;font-weight:800;
   color:rgba(255,255,255,.8);
   background:var(--yum-dark-green);
 }
@@ -334,8 +347,8 @@ nav{
   padding:1.75rem;border:1.5px solid rgba(61,107,82,.1);
 }
 .font-card .font-name{font-size:.75rem;font-weight:700;color:var(--yum-muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
-.font-sample-display{font-family:'Nunito',sans-serif;font-size:2.5rem;font-weight:900;color:var(--yum-dark-green);line-height:1.1}
-.font-sample-body{font-family:'DM Sans',sans-serif;font-size:1.1rem;color:var(--yum-muted);line-height:1.7;margin-top:.5rem}
+.font-sample-display{font-family:'Maxi Round',sans-serif;font-size:2.5rem;font-weight:900;color:var(--yum-dark-green);line-height:1.1}
+.font-sample-body{font-family:'Apercu',sans-serif;font-size:1.1rem;color:var(--yum-muted);line-height:1.7;margin-top:.5rem}
 .font-note{font-size:.8rem;color:var(--yum-muted);margin-top:.5rem;font-style:italic}
 
 /* ═══════════════════════════════════════════════════
@@ -359,7 +372,7 @@ nav{
   display:inline-flex;align-items:center;gap:.5rem;
   background:rgba(255,255,255,.1);color:var(--yum-white);
   border:1.5px solid rgba(255,255,255,.2);
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;
+  font-family:'Maxi Round',sans-serif;font-weight:800;font-size:.9rem;
   padding:.65rem 1.6rem;border-radius:var(--radius-pill);
   text-decoration:none;transition:background .2s;position:relative;
 }
@@ -381,7 +394,7 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
 
 /* ── Section header helpers ─────────────────────── */
 .section-label{
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:.78rem;
+  font-family:'Maxi Round',sans-serif;font-weight:800;font-size:.78rem;
   letter-spacing:.14em;text-transform:uppercase;
   color:var(--yum-green);display:block;margin-bottom:.75rem;
 }
@@ -766,7 +779,7 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
 
     <div class="brand-grid">
       <div class="fade-up">
-        <h4 class="h4" style="margin-bottom:1.25rem;font-family:'Nunito',sans-serif">Color Palette</h4>
+        <h4 class="h4" style="margin-bottom:1.25rem;font-family:'Maxi Round',sans-serif">Color Palette</h4>
         <div class="color-swatches">
           <div class="swatch-row">
             <div class="swatch">
@@ -807,7 +820,7 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
         </div>
 
         <div style="margin-top:2rem">
-          <h4 class="h4" style="margin-bottom:1rem;font-family:'Nunito',sans-serif">Usage Principles</h4>
+          <h4 class="h4" style="margin-bottom:1rem;font-family:'Maxi Round',sans-serif">Usage Principles</h4>
           <div style="display:flex;flex-direction:column;gap:.6rem">
             <div style="display:flex;gap:.75rem;align-items:center">
               <div style="width:12px;height:12px;border-radius:50%;background:#2B4A3A;flex-shrink:0"></div>
@@ -830,25 +843,25 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
       </div>
 
       <div class="font-preview fade-up" style="transition-delay:.15s">
-        <h4 class="h4" style="margin-bottom:1.25rem;font-family:'Nunito',sans-serif">Typography</h4>
+        <h4 class="h4" style="margin-bottom:1.25rem;font-family:'Maxi Round',sans-serif">Typography</h4>
 
         <div class="font-card">
           <div class="font-name">Display / Headers — Maxi Round by Dinamo</div>
           <div class="font-sample-display">Yum Lab</div>
           <div class="font-sample-display" style="font-size:1.6rem;color:var(--yum-muted);font-weight:700">Hey, Chef! What are we cooking today?</div>
-          <div class="font-note">Rounded, bold, approachable. Used for all H1–H4, app name, badges, and level labels. Approximated here with Nunito.</div>
+          <div class="font-note">Rounded, bold, approachable. Used for all H1–H4, app name, badges, and level labels. Set in ABC Maxi Round Regular Trial.</div>
         </div>
 
         <div class="font-card">
           <div class="font-name">Body / UI Text — Apercu by Colophon</div>
           <div class="font-sample-body">Yum Lab teaches kids real cooking skills through guided recipes, a community of young chefs, and the ability to shop for just the ingredients they need.</div>
           <div class="font-sample-body" style="font-size:.9rem;margin-top:.5rem">Knife Skills · Level 4 (80%) · "You're getting faster at the Claw Grip!"</div>
-          <div class="font-note">Clean, geometric, friendly. Used for all body copy, step instructions, UI labels, and captions. Approximated here with DM Sans.</div>
+          <div class="font-note">Clean, geometric, friendly. Used for all body copy, step instructions, UI labels, and captions. Set in Apercu by Colophon Foundry.</div>
         </div>
 
         <div class="font-card" style="background:var(--yum-dark-green)">
           <div class="font-name" style="color:rgba(255,255,255,.5)">Voice & Tone</div>
-          <div style="font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:800;color:var(--yum-yellow)">"You got this, Chef."</div>
+          <div style="font-family:'Maxi Round',sans-serif;font-size:1.2rem;font-weight:800;color:var(--yum-yellow)">"You got this, Chef."</div>
           <div class="font-sample-body" style="color:rgba(255,255,255,.65);margin-top:.5rem">Encouraging, direct, never childish. We say "Lab" not "lesson." We say "Chef" not "kid." Confidence-first language at every step.</div>
         </div>
       </div>
