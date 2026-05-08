@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Yum Lab — Real Cooking Skills for Kids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<!-- Approximating Maxi Round with Nunito (rounded, friendly header font) & DM Sans for body -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ── Brand tokens ───────────────────────────────── */
+:root {
+  --yum-dark-green: #2B4A3A;
+  --yum-green:      #3D6B52;
+  --yum-light-green:#E8F0EB;
+  --yum-yellow:     #F5C842;
+  --yum-orange:     #F0845A;
+  --yum-peach:      #FAD9C8;
+  --yum-mint:       #B8DDD0;
+  --yum-cream:      #FBF7EF;
+  --yum-white:      #FFFFFF;
+  --yum-text:       #1C2E25;
+  --yum-muted:      #5C7A68;
+  --radius-card:    24px;
+  --radius-pill:    999px;
+  font-size: 16px;
+}
+
+/* ── Reset ──────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--yum-cream);
+  color:var(--yum-text);
+  overflow-x:hidden;
+}
+
+/* ── Typography helpers ─────────────────────────── */
+.display{font-family:'Nunito',sans-serif;font-weight:900;line-height:1.05;letter-spacing:-0.02em}
+.h1{font-size:clamp(2.8rem,6vw,5.5rem)}
+.h2{font-size:clamp(2rem,4vw,3.5rem);font-weight:800}
+.h3{font-size:clamp(1.3rem,2.5vw,2rem);font-weight:800}
+.h4{font-size:1.15rem;font-weight:700}
+.body-lg{font-size:1.15rem;line-height:1.7;color:var(--yum-muted)}
+.body{font-size:1rem;line-height:1.65;color:var(--yum-muted)}
+.label{font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+
+/* ── Layout helpers ─────────────────────────────── */
+.container{max-width:1140px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+.section{padding:clamp(5rem,10vw,9rem) 0}
+
+/* ── Nav ────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(251,247,239,.85);
+  border-bottom:1.5px solid rgba(61,107,82,.12);
+}
+.nav-inner{
+  max-width:1140px;margin:0 auto;
+  padding:.9rem clamp(1.25rem,4vw,3rem);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+.nav-logo-mark{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--yum-dark-green);
+  display:grid;place-items:center;
+  font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:var(--yum-yellow);
+}
+.nav-logo-text{font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:900;color:var(--yum-dark-green)}
+.nav-links{display:flex;align-items:center;gap:1.75rem}
+.nav-links a{text-decoration:none;font-size:.9rem;font-weight:600;color:var(--yum-muted);transition:color .2s}
+.nav-links a:hover{color:var(--yum-dark-green)}
+.nav-cta{
+  background:var(--yum-dark-green);color:var(--yum-yellow);
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;
+  padding:.55rem 1.4rem;border-radius:var(--radius-pill);
+  text-decoration:none;transition:opacity .2s;
+}
+.nav-cta:hover{opacity:.85}
+
+/* ── Pill badge ─────────────────────────────────── */
+.pill{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.35rem 1rem;border-radius:var(--radius-pill);
+  font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:800;
+  letter-spacing:.06em;
+}
+.pill-green{background:var(--yum-light-green);color:var(--yum-dark-green)}
+.pill-yellow{background:#FEF3C0;color:#92610A}
+.pill-orange{background:#FDE8DC;color:#B44B23}
+.pill-mint{background:#D4EDE6;color:#236350}
+
+/* ═══════════════════════════════════════════════════
+   1. HERO
+═══════════════════════════════════════════════════ */
+#hero{
+  padding-top:clamp(7rem,14vw,11rem);
+  padding-bottom:0;
+  background:var(--yum-dark-green);
+  color:var(--yum-white);
+  overflow:hidden;
+  position:relative;
+}
+.hero-blob{
+  position:absolute;top:-120px;right:-180px;
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(245,200,66,.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:end;
+  position:relative;
+}
+.hero-copy{padding-bottom:5rem}
+.hero-copy .pill{margin-bottom:1.5rem;background:rgba(245,200,66,.15);color:var(--yum-yellow)}
+.hero-copy h1{color:var(--yum-white);margin-bottom:1.25rem}
+.hero-copy h1 em{color:var(--yum-yellow);font-style:normal}
+.hero-copy p{color:rgba(255,255,255,.7);font-size:1.15rem;line-height:1.7;margin-bottom:2rem;max-width:42ch}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--yum-yellow);color:var(--yum-dark-green);
+  font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;
+  padding:.8rem 2rem;border-radius:var(--radius-pill);text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 20px rgba(245,200,66,.35);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,200,66,.45)}
+.btn-ghost{
+  background:transparent;color:var(--yum-white);
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;
+  padding:.8rem 2rem;border-radius:var(--radius-pill);text-decoration:none;
+  border:2px solid rgba(255,255,255,.25);transition:border-color .2s;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,.6)}
+
+.hero-phones{
+  display:flex;gap:1.2rem;align-items:flex-end;justify-content:center;
+  padding-bottom:0;
+}
+.phone-frame{
+  width:175px;border-radius:28px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  border:3px solid rgba(255,255,255,.12);
+  background:#111;flex-shrink:0;
+}
+.phone-frame img{width:100%;display:block}
+.phone-frame.tall{transform:translateY(-24px)}
+
+/* ── Ticker ─────────────────────────────────────── */
+.ticker-wrap{
+  background:var(--yum-yellow);
+  overflow:hidden;padding:.7rem 0;
+  margin-top:3rem;
+}
+.ticker-track{
+  display:flex;gap:0;width:max-content;
+  animation:ticker 28s linear infinite;
+}
+.ticker-track span{
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;
+  color:var(--yum-dark-green);white-space:nowrap;
+  padding:0 2rem;
+}
+.ticker-track span::after{content:"✦";margin-left:2rem}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══════════════════════════════════════════════════
+   2. WHY YUM LAB
+═══════════════════════════════════════════════════ */
+#why{background:var(--yum-cream)}
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;margin-top:3.5rem;
+}
+.why-card{
+  background:var(--yum-white);
+  border-radius:var(--radius-card);
+  padding:2rem 1.75rem;
+  border:1.5px solid rgba(61,107,82,.1);
+  transition:transform .25s,box-shadow .25s;
+}
+.why-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(43,74,58,.1)}
+.why-icon{
+  width:52px;height:52px;border-radius:14px;
+  display:grid;place-items:center;font-size:1.6rem;
+  margin-bottom:1.25rem;
+}
+.why-card h3{font-size:1.1rem;font-weight:800;margin-bottom:.6rem;font-family:'Nunito',sans-serif}
+.why-card p{font-size:.95rem;line-height:1.65;color:var(--yum-muted)}
+.stat-row{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;margin-top:1.5rem;
+}
+.stat-box{
+  background:var(--yum-dark-green);color:var(--yum-white);
+  border-radius:var(--radius-card);padding:2rem 1.5rem;text-align:center;
+}
+.stat-box .num{font-family:'Nunito',sans-serif;font-size:3rem;font-weight:900;color:var(--yum-yellow);line-height:1}
+.stat-box p{font-size:.9rem;color:rgba(255,255,255,.65);margin-top:.5rem}
+
+/* ═══════════════════════════════════════════════════
+   3-5. USE CASES
+═══════════════════════════════════════════════════ */
+.use-case{
+  padding:clamp(4rem,8vw,7rem) 0;
+}
+.use-case:nth-child(odd){background:var(--yum-white)}
+.use-case:nth-child(even){background:var(--yum-cream)}
+
+.uc-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(2rem,5vw,5rem);align-items:center;
+}
+.uc-inner.reverse{direction:rtl}
+.uc-inner.reverse > *{direction:ltr}
+
+.uc-copy .pill{margin-bottom:1.25rem}
+.uc-copy h2{margin-bottom:1rem}
+.uc-copy p{margin-bottom:1.5rem}
+
+.uc-steps{display:flex;flex-direction:column;gap:.85rem;margin-top:1.5rem}
+.step{
+  display:flex;gap:1rem;align-items:flex-start;
+  background:var(--yum-light-green);border-radius:16px;padding:1rem 1.25rem;
+}
+.step-num{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--yum-dark-green);color:var(--yum-yellow);
+  font-family:'Nunito',sans-serif;font-weight:900;font-size:.85rem;
+  display:grid;place-items:center;flex-shrink:0;
+}
+.step p{font-size:.95rem;line-height:1.55;margin:0}
+
+/* Phone mockup panel */
+.phone-panel{
+  position:relative;display:flex;
+  justify-content:center;align-items:flex-end;
+  gap:1rem;
+}
+.phone-panel .phone{
+  width:200px;border-radius:28px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(43,74,58,.2);
+  border:3px solid rgba(43,74,58,.12);background:#f0f0f0;
+  flex-shrink:0;
+}
+.phone-panel .phone img{width:100%;display:block}
+.phone-panel .phone.behind{
+  width:175px;transform:translateY(30px);
+  opacity:.75;
+}
+.uc-bg-blob{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:0;
+}
+
+/* ═══════════════════════════════════════════════════
+   6. ADDITIONAL FEATURES (AI)
+═══════════════════════════════════════════════════ */
+#ai-features{background:var(--yum-dark-green);color:var(--yum-white);padding:clamp(5rem,10vw,8rem) 0}
+#ai-features .section-label{color:var(--yum-yellow)}
+#ai-features h2{color:var(--yum-white);margin-bottom:.75rem}
+#ai-features > .container > p{color:rgba(255,255,255,.65);margin-bottom:3rem}
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.ai-card{
+  background:rgba(255,255,255,.07);
+  border:1.5px solid rgba(255,255,255,.12);
+  border-radius:var(--radius-card);
+  padding:2rem 1.75rem;
+  transition:background .25s,transform .25s;
+}
+.ai-card:hover{background:rgba(255,255,255,.12);transform:translateY(-3px)}
+.ai-icon{font-size:2.2rem;margin-bottom:1rem}
+.ai-card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:.6rem;color:var(--yum-white)}
+.ai-card p{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.6}
+
+/* ═══════════════════════════════════════════════════
+   7. SLOW SCROLL SHOWCASE
+═══════════════════════════════════════════════════ */
+#showcase{background:var(--yum-cream);padding:clamp(4rem,8vw,7rem) 0;overflow:hidden}
+.showcase-track-wrap{overflow:hidden;position:relative}
+.showcase-track-wrap::before,.showcase-track-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;
+  pointer-events:none;
+}
+.showcase-track-wrap::before{left:0;background:linear-gradient(90deg,var(--yum-cream),transparent)}
+.showcase-track-wrap::after{right:0;background:linear-gradient(-90deg,var(--yum-cream),transparent)}
+.showcase-track{
+  display:flex;gap:1.5rem;padding:1rem 0;
+  width:max-content;
+  animation:scroll-left 40s linear infinite;
+}
+.showcase-track:hover{animation-play-state:paused}
+@keyframes scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.showcase-phone{
+  width:200px;flex-shrink:0;border-radius:24px;overflow:hidden;
+  border:3px solid rgba(43,74,58,.12);
+  box-shadow:0 16px 48px rgba(43,74,58,.15);
+  background:#fff;
+}
+.showcase-phone img{width:100%;display:block}
+
+/* placeholder screens for showcase */
+.screen-placeholder{
+  width:100%;aspect-ratio:390/844;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.5rem;
+  font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:800;
+  color:rgba(255,255,255,.8);
+  background:var(--yum-dark-green);
+}
+
+/* ═══════════════════════════════════════════════════
+   8. BRANDING
+═══════════════════════════════════════════════════ */
+#branding{background:var(--yum-white);padding:clamp(5rem,10vw,8rem) 0}
+.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem}
+.color-swatches{display:flex;flex-direction:column;gap:1rem}
+.swatch-row{display:flex;gap:.75rem;flex-wrap:wrap}
+.swatch{
+  display:flex;flex-direction:column;gap:.4rem;
+  align-items:flex-start;
+}
+.swatch-block{width:72px;height:72px;border-radius:14px;border:1.5px solid rgba(0,0,0,.08)}
+.swatch span{font-size:.72rem;font-weight:600;color:var(--yum-muted)}
+.font-preview{display:flex;flex-direction:column;gap:1.5rem}
+.font-card{
+  background:var(--yum-cream);border-radius:var(--radius-card);
+  padding:1.75rem;border:1.5px solid rgba(61,107,82,.1);
+}
+.font-card .font-name{font-size:.75rem;font-weight:700;color:var(--yum-muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.font-sample-display{font-family:'Nunito',sans-serif;font-size:2.5rem;font-weight:900;color:var(--yum-dark-green);line-height:1.1}
+.font-sample-body{font-family:'DM Sans',sans-serif;font-size:1.1rem;color:var(--yum-muted);line-height:1.7;margin-top:.5rem}
+.font-note{font-size:.8rem;color:var(--yum-muted);margin-top:.5rem;font-style:italic}
+
+/* ═══════════════════════════════════════════════════
+   9. CLOSING + FOOTER
+═══════════════════════════════════════════════════ */
+#closing{
+  background:var(--yum-dark-green);
+  text-align:center;
+  padding:clamp(5rem,12vw,10rem) 0 clamp(4rem,8vw,7rem);
+  position:relative;overflow:hidden;
+}
+#closing::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(245,200,66,.15) 0%,transparent 65%);
+  pointer-events:none;
+}
+#closing h2{color:var(--yum-white);margin-bottom:1rem;position:relative}
+#closing h2 em{color:var(--yum-yellow);font-style:normal}
+#closing p{color:rgba(255,255,255,.6);margin-bottom:2.5rem;font-size:1.1rem;position:relative}
+.back-top{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.1);color:var(--yum-white);
+  border:1.5px solid rgba(255,255,255,.2);
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;
+  padding:.65rem 1.6rem;border-radius:var(--radius-pill);
+  text-decoration:none;transition:background .2s;position:relative;
+}
+.back-top:hover{background:rgba(255,255,255,.18)}
+
+footer{
+  background:#1A3028;
+  padding:2rem clamp(1.25rem,4vw,3rem);
+}
+.footer-inner{
+  max-width:1140px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.85rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.7)}
+
+/* ── Section header helpers ─────────────────────── */
+.section-label{
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.78rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--yum-green);display:block;margin-bottom:.75rem;
+}
+.section-header{text-align:center;max-width:680px;margin:0 auto 3rem}
+.section-header h2{margin-bottom:.75rem}
+.section-header p{color:var(--yum-muted);font-size:1.05rem;line-height:1.7}
+
+/* ── Responsive ─────────────────────────────────── */
+@media(max-width:900px){
+  .hero-inner,.uc-inner,.brand-grid{grid-template-columns:1fr}
+  .uc-inner.reverse{direction:ltr}
+  .hero-phones{padding-bottom:2rem}
+  .why-grid,.stat-row,.ai-grid{grid-template-columns:1fr 1fr}
+  .phone-panel{justify-content:center}
+}
+@media(max-width:600px){
+  .why-grid,.stat-row,.ai-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero-phones{gap:.75rem}
+  .phone-frame{width:140px}
+}
+
+/* ── Fade-in on scroll ──────────────────────────── */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fade-up.visible{opacity:1;transform:none}
+</style>
+</head>
+<body id="top">
+
+<!-- ── NAV ──────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">
+      <div class="nav-logo-mark">Y</div>
+      <span class="nav-logo-text">Yum Lab</span>
+    </a>
+    <div class="nav-links">
+      <a href="#why">Why</a>
+      <a href="#use-case-1">Use Cases</a>
+      <a href="#ai-features">AI Features</a>
+      <a href="#branding">Branding</a>
+    </div>
+    <a href="#closing" class="nav-cta">Join Waitlist</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     1. HERO / SHOWCASE
+══════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-blob"></div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <div class="hero-copy fade-up">
+        <span class="pill">🧪 Now in development</span>
+        <h1 class="display h1">
+          Real cooking.<br><em>Real skills.</em><br>Real fun.
+        </h1>
+        <p>Yum Lab teaches kids real cooking skills — from finding ingredients at home to mastering techniques, building a skill tree, and connecting with a community of young chefs.</p>
+        <div class="hero-btns">
+          <a href="#why" class="btn-primary">Explore the app ↓</a>
+          <a href="#use-case-1" class="btn-ghost">See use cases</a>
+        </div>
+      </div>
+
+      <div class="hero-phones fade-up" style="transition-delay:.2s">
+        <div class="phone-frame">
+          <div class="screen-placeholder" style="background:#2B4A3A">
+            <span style="font-size:2rem">🏠</span>
+            <span>Home Screen</span>
+          </div>
+        </div>
+        <div class="phone-frame tall">
+          <div class="screen-placeholder" style="background:#3D6B52">
+            <span style="font-size:2rem">🧑‍🍳</span>
+            <span>Chef Profile</span>
+          </div>
+        </div>
+        <div class="phone-frame">
+          <div class="screen-placeholder" style="background:#4D7F66">
+            <span style="font-size:2rem">🛒</span>
+            <span>Shop Ingredients</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>Cook with what you have</span>
+      <span>Shop exactly what you need</span>
+      <span>Build your skill tree</span>
+      <span>Join a community of young chefs</span>
+      <span>AI voice assistant, hands-free</span>
+      <span>Learn end-to-end kitchen skills</span>
+      <span>Cook with what you have</span>
+      <span>Shop exactly what you need</span>
+      <span>Build your skill tree</span>
+      <span>Join a community of young chefs</span>
+      <span>AI voice assistant, hands-free</span>
+      <span>Learn end-to-end kitchen skills</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     2. WHY YUM LAB
+══════════════════════════════════════════════ -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Why it matters</span>
+      <h2 class="display h2">Kids are more capable<br>than we think.</h2>
+      <p>Most cooking apps treat kids like toddlers or assume they're adults. Yum Lab is built for the 12+ kid who is ready for real independence — in the kitchen and in life.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-icon" style="background:#E8F0EB">🍳</div>
+        <h3>End-to-End Kitchen Skills</h3>
+        <p>From identifying what's in the fridge to plating, cleanup, and everything in between — Yum Lab teaches the full arc of real cooking, not just following a list.</p>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.1s">
+        <div class="why-icon" style="background:#FEF3C0">🛡️</div>
+        <h3>Built for Independent Kids</h3>
+        <p>Every step accounts for safety — dangerous appliances get video tutorials, parents get payment notifications, and AI keeps kids guided without hand-holding.</p>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.2s">
+        <div class="why-icon" style="background:#FDE8DC">🌍</div>
+        <h3>Life Skills That Last</h3>
+        <p>Cooking is the gateway to nutrition literacy, budgeting, planning, and self-sufficiency. Yum Lab plants that seed at the right age, with the right tone.</p>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.05s">
+        <div class="why-icon" style="background:#D4EDE6">👥</div>
+        <h3>A Community of Peers</h3>
+        <p>Kids share dishes, earn badges, and follow chefs their own age. Social learning keeps motivation high far longer than solo app use.</p>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.15s">
+        <div class="why-icon" style="background:#E8F0EB">🤖</div>
+        <h3>AI That Works Hands-Free</h3>
+        <p>Voice and image AI means kids don't have to stop chopping to tap a screen. The assistant watches, listens, and guides — just like a mentor standing nearby.</p>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.25s">
+        <div class="why-icon" style="background:#FEF3C0">🧪</div>
+        <h3>Progress That's Visible</h3>
+        <p>Every recipe completed levels up a skill. Knife Skills, Heat Management, Seasoning — kids can see themselves growing, and so can their parents.</p>
+      </div>
+    </div>
+
+    <div class="stat-row" style="margin-top:2rem">
+      <div class="stat-box fade-up">
+        <div class="num">73%</div>
+        <p>of kids aged 12–17 say they want to learn to cook but don't know where to start</p>
+      </div>
+      <div class="stat-box fade-up" style="transition-delay:.1s">
+        <div class="num">3×</div>
+        <p>more likely to eat nutritious meals when kids are involved in cooking them</p>
+      </div>
+      <div class="stat-box fade-up" style="transition-delay:.2s">
+        <div class="num">0</div>
+        <p>existing apps address the full end-to-end cooking journey for 12+ kids</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     3. USE CASE 1
+══════════════════════════════════════════════ -->
+<section id="use-case-1" class="use-case">
+  <div class="container">
+    <div class="uc-inner">
+      <div class="uc-copy fade-up">
+        <span class="pill pill-green">Use Case 01</span>
+        <h2 class="display h2">Cook what's already<br>in your kitchen.</h2>
+        <p class="body-lg">Open the fridge, tap "Explore Fridge," and Yum Lab figures out what you can make — right now, with zero shopping needed.</p>
+
+        <div class="uc-steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <p><strong>Scan your kitchen.</strong> AI image recognition identifies your ingredients and appliances from a quick photo.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <p><strong>Get matched recipes.</strong> Yum Lab surfaces recipes you can actually make — no missing ingredients.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <p><strong>Start the Lab.</strong> Follow guided prep, get cooking tips, use AI voice assistance hands-free, and finish with clean-up guidance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-panel fade-up" style="transition-delay:.15s">
+        <div class="phone behind">
+          <div class="screen-placeholder" style="background:#3D6B52;aspect-ratio:390/844">
+            <span style="font-size:2rem">🥕</span>
+            <span>Fridge Scan</span>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="screen-placeholder" style="background:#2B4A3A;aspect-ratio:390/844">
+            <span style="font-size:2rem">🍜</span>
+            <span>Recipe Match</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     4. USE CASE 2
+══════════════════════════════════════════════ -->
+<section id="use-case-2" class="use-case">
+  <div class="container">
+    <div class="uc-inner reverse">
+      <div class="uc-copy fade-up">
+        <span class="pill pill-orange">Use Case 02</span>
+        <h2 class="display h2">Dream recipe?<br>Shop just what<br>you need.</h2>
+        <p class="body-lg">Kids pick any recipe, Yum Lab calculates exactly what's missing — and lets them buy just those ingredients in the right amounts. No waste. No giant grocery hauls.</p>
+
+        <div class="uc-steps">
+          <div class="step" style="background:#FDE8DC">
+            <div class="step-num" style="background:#F0845A;color:#fff">1</div>
+            <p><strong>Pick a dream recipe.</strong> Browse trending dishes, community favorites, or search anything.</p>
+          </div>
+          <div class="step" style="background:#FDE8DC">
+            <div class="step-num" style="background:#F0845A;color:#fff">2</div>
+            <p><strong>Check what's missing.</strong> Yum Lab cross-references your pantry and shows only the gap ingredients.</p>
+          </div>
+          <div class="step" style="background:#FDE8DC">
+            <div class="step-num" style="background:#F0845A;color:#fff">3</div>
+            <p><strong>Shop in small amounts.</strong> Buy a pinch, a cup, or just enough. Checkout sends a payment request to a parent for verification. ✅</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-panel fade-up" style="transition-delay:.15s">
+        <div class="phone">
+          <div class="screen-placeholder" style="background:#B44B23;aspect-ratio:390/844">
+            <span style="font-size:2rem">🧾</span>
+            <span>Ingredient List</span>
+          </div>
+        </div>
+        <div class="phone behind">
+          <div class="screen-placeholder" style="background:#F0845A;aspect-ratio:390/844">
+            <span style="font-size:2rem">📱</span>
+            <span>Parent Approval</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     5. USE CASE 3
+══════════════════════════════════════════════ -->
+<section id="use-case-3" class="use-case">
+  <div class="container">
+    <div class="uc-inner">
+      <div class="uc-copy fade-up">
+        <span class="pill pill-mint">Use Case 03</span>
+        <h2 class="display h2">Build your skill tree.<br>Grow with the<br>community.</h2>
+        <p class="body-lg">Every recipe completed levels up a real cooking skill. Knife work, heat management, seasoning, baking science — kids see themselves getting better, and so do their peers.</p>
+
+        <div class="uc-steps">
+          <div class="step" style="background:#D4EDE6">
+            <div class="step-num" style="background:#1D9E75;color:#fff">1</div>
+            <p><strong>Complete Labs to level up.</strong> Finishing recipes earns XP toward specific skills in your tree — Knife Skills, Seasoning, Heat Management, and more.</p>
+          </div>
+          <div class="step" style="background:#D4EDE6">
+            <div class="step-num" style="background:#1D9E75;color:#fff">2</div>
+            <p><strong>Earn badges & titles.</strong> Collect achievements like "Pasta Pro," "Healthy Eater," or "Junior Scientist" as your profile grows.</p>
+          </div>
+          <div class="step" style="background:#D4EDE6">
+            <div class="step-num" style="background:#1D9E75;color:#fff">3</div>
+            <p><strong>Share your dish.</strong> Post to the community feed, react to other chefs' creations, and find inspiration from kids your age around the world.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-panel fade-up" style="transition-delay:.15s">
+        <div class="phone behind">
+          <div class="screen-placeholder" style="background:#236350;aspect-ratio:390/844">
+            <span style="font-size:2rem">🌿</span>
+            <span>Community Feed</span>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="screen-placeholder" style="background:#1D9E75;aspect-ratio:390/844">
+            <span style="font-size:2rem">🌳</span>
+            <span>Skill Tree</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     6. AI FEATURES
+══════════════════════════════════════════════ -->
+<section id="ai-features">
+  <div class="container">
+    <div class="section-header fade-up" style="text-align:center">
+      <span class="section-label" style="color:var(--yum-yellow)">AI-Powered Kitchen Assistant</span>
+      <h2 class="display h2" style="color:var(--yum-white)">Hands free.<br>Eyes on the food.</h2>
+      <p style="color:rgba(255,255,255,.6)">Three AI features designed so kids never have to choose between watching the stove and reading a screen.</p>
+    </div>
+
+    <div class="ai-grid">
+      <div class="ai-card fade-up">
+        <div class="ai-icon">🎙️</div>
+        <h3>AI Voice Assistant</h3>
+        <p>Talk to Yum Lab hands-free while cooking. Ask "what's next?", set timers, get ingredient swaps, or hear a step repeated — without touching the screen.</p>
+      </div>
+      <div class="ai-card fade-up" style="transition-delay:.1s">
+        <div class="ai-icon">📸</div>
+        <h3>AI Image Recognition</h3>
+        <p>Point the camera at any ingredient or appliance. Yum Lab identifies it instantly — confirming what you have, flagging what's missing, and suggesting alternatives.</p>
+      </div>
+      <div class="ai-card fade-up" style="transition-delay:.2s">
+        <div class="ai-icon">🎬</div>
+        <h3>Safety Video Tutorials</h3>
+        <p>Knife? Oven? Stand mixer? When the camera detects a dangerous appliance, Yum Lab auto-surfaces a safety tutorial specific to that exact tool — before the kid touches it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     7. AUTO SCROLL SHOWCASE
+══════════════════════════════════════════════ -->
+<section id="showcase">
+  <div class="container" style="margin-bottom:2.5rem">
+    <div class="section-header fade-up">
+      <span class="section-label">The full experience</span>
+      <h2 class="display h2">Every screen, designed<br>for young chefs.</h2>
+    </div>
+  </div>
+
+  <div class="showcase-track-wrap">
+    <div class="showcase-track">
+      <!-- 8 placeholders, doubled for seamless loop -->
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#2B4A3A"><span style="font-size:2rem">🏠</span><span>Home</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#3D6B52"><span style="font-size:2rem">🧑‍🍳</span><span>Profile</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#F0845A"><span style="font-size:2rem">🛒</span><span>Shop</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#1D9E75"><span style="font-size:2rem">🌳</span><span>Skill Tree</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#B44B23"><span style="font-size:2rem">🍜</span><span>Recipe Lab</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#236350"><span style="font-size:2rem">👥</span><span>Community</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#92610A"><span style="font-size:2rem">🎙️</span><span>AI Assistant</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#4D7F66"><span style="font-size:2rem">📸</span><span>Camera AI</span></div></div>
+      <!-- Duplicate for loop -->
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#2B4A3A"><span style="font-size:2rem">🏠</span><span>Home</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#3D6B52"><span style="font-size:2rem">🧑‍🍳</span><span>Profile</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#F0845A"><span style="font-size:2rem">🛒</span><span>Shop</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#1D9E75"><span style="font-size:2rem">🌳</span><span>Skill Tree</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#B44B23"><span style="font-size:2rem">🍜</span><span>Recipe Lab</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#236350"><span style="font-size:2rem">👥</span><span>Community</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#92610A"><span style="font-size:2rem">🎙️</span><span>AI Assistant</span></div></div>
+      <div class="showcase-phone"><div class="screen-placeholder" style="aspect-ratio:390/844;background:#4D7F66"><span style="font-size:2rem">📸</span><span>Camera AI</span></div></div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:1.25rem;font-size:.85rem;color:var(--yum-muted);font-style:italic">Screen placeholders — swap with real UI mockups before launch</p>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     8. BRANDING
+══════════════════════════════════════════════ -->
+<section id="branding">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Brand identity</span>
+      <h2 class="display h2">Warm, confident,<br>and never condescending.</h2>
+      <p>Yum Lab's visual language is rooted in natural greens, warm ambers, and playful personality — serious enough for a 16-year-old, friendly enough for a 12-year-old.</p>
+    </div>
+
+    <div class="brand-grid">
+      <div class="fade-up">
+        <h4 class="h4" style="margin-bottom:1.25rem;font-family:'Nunito',sans-serif">Color Palette</h4>
+        <div class="color-swatches">
+          <div class="swatch-row">
+            <div class="swatch">
+              <div class="swatch-block" style="background:#2B4A3A"></div>
+              <span>Dark Green</span><span style="font-size:.65rem">#2B4A3A</span>
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#3D6B52"></div>
+              <span>Yum Green</span><span style="font-size:.65rem">#3D6B52</span>
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#B8DDD0"></div>
+              <span>Mint</span><span style="font-size:.65rem">#B8DDD0</span>
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#E8F0EB"></div>
+              <span>Light Green</span><span style="font-size:.65rem">#E8F0EB</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch">
+              <div class="swatch-block" style="background:#F5C842"></div>
+              <span>Yum Yellow</span><span style="font-size:.65rem">#F5C842</span>
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#F0845A"></div>
+              <span>Warm Orange</span><span style="font-size:.65rem">#F0845A</span>
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#FAD9C8"></div>
+              <span>Peach</span><span style="font-size:.65rem">#FAD9C8</span>
+            </div>
+            <div class="swatch">
+              <div class="swatch-block" style="background:#FBF7EF"></div>
+              <span>Cream</span><span style="font-size:.65rem">#FBF7EF</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem">
+          <h4 class="h4" style="margin-bottom:1rem;font-family:'Nunito',sans-serif">Usage Principles</h4>
+          <div style="display:flex;flex-direction:column;gap:.6rem">
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <div style="width:12px;height:12px;border-radius:50%;background:#2B4A3A;flex-shrink:0"></div>
+              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Dark Green</strong> — primary backgrounds, nav, CTAs</p>
+            </div>
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <div style="width:12px;height:12px;border-radius:50%;background:#F5C842;flex-shrink:0"></div>
+              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Yellow</strong> — highlights, primary action buttons</p>
+            </div>
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <div style="width:12px;height:12px;border-radius:50%;background:#F0845A;flex-shrink:0"></div>
+              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Orange</strong> — e-commerce, shopping, payment flows</p>
+            </div>
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <div style="width:12px;height:12px;border-radius:50%;background:#B8DDD0;flex-shrink:0"></div>
+              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Mint</strong> — community, social, skill progression</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-preview fade-up" style="transition-delay:.15s">
+        <h4 class="h4" style="margin-bottom:1.25rem;font-family:'Nunito',sans-serif">Typography</h4>
+
+        <div class="font-card">
+          <div class="font-name">Display / Headers — Maxi Round by Dinamo</div>
+          <div class="font-sample-display">Yum Lab</div>
+          <div class="font-sample-display" style="font-size:1.6rem;color:var(--yum-muted);font-weight:700">Hey, Chef! What are we cooking today?</div>
+          <div class="font-note">Rounded, bold, approachable. Used for all H1–H4, app name, badges, and level labels. Approximated here with Nunito.</div>
+        </div>
+
+        <div class="font-card">
+          <div class="font-name">Body / UI Text — Apercu by Colophon</div>
+          <div class="font-sample-body">Yum Lab teaches kids real cooking skills through guided recipes, a community of young chefs, and the ability to shop for just the ingredients they need.</div>
+          <div class="font-sample-body" style="font-size:.9rem;margin-top:.5rem">Knife Skills · Level 4 (80%) · "You're getting faster at the Claw Grip!"</div>
+          <div class="font-note">Clean, geometric, friendly. Used for all body copy, step instructions, UI labels, and captions. Approximated here with DM Sans.</div>
+        </div>
+
+        <div class="font-card" style="background:var(--yum-dark-green)">
+          <div class="font-name" style="color:rgba(255,255,255,.5)">Voice & Tone</div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:800;color:var(--yum-yellow)">"You got this, Chef."</div>
+          <div class="font-sample-body" style="color:rgba(255,255,255,.65);margin-top:.5rem">Encouraging, direct, never childish. We say "Lab" not "lesson." We say "Chef" not "kid." Confidence-first language at every step.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     9. CLOSING
+══════════════════════════════════════════════ -->
+<section id="closing">
+  <div class="container">
+    <div class="fade-up">
+      <h2 class="display h2">Every great chef<br>started with<br><em>a first recipe.</em></h2>
+      <p>Yum Lab is where that story begins. Join the waitlist and be first to know when we launch.</p>
+      <a href="#top" class="back-top">↑ Back to top</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2026 Yum Lab. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Fade-in on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, {threshold: 0.12});
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
