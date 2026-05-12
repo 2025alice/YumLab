@@ -24,17 +24,19 @@
 
 /* ── Brand tokens ───────────────────────────────── */
 :root {
-  --yum-dark-green: #2B4A3A;
-  --yum-green:      #3D6B52;
-  --yum-light-green:#E8F0EB;
-  --yum-yellow:     #F5C842;
-  --yum-orange:     #F0845A;
-  --yum-peach:      #FAD9C8;
-  --yum-mint:       #B8DDD0;
-  --yum-cream:      #FBF7EF;
+  --yum-dark-green: #26471E;
+  --yum-green:      #3a6b2a;
+  --yum-light-green:#B1EAC4;
+  --yum-yellow:     #FCEE85;
+  --yum-orange:     #FFB288;
+  --yum-peach:      #FFD4B8;
+  --yum-coral:      #FF6A52;
+  --yum-blue:       #B5D5FF;
+  --yum-mint:       #B1EAC4;
+  --yum-cream:      #F7FAF4;
   --yum-white:      #FFFFFF;
-  --yum-text:       #1C2E25;
-  --yum-muted:      #5C7A68;
+  --yum-text:       #1a2e14;
+  --yum-muted:      #4d6b42;
   --radius-card:    24px;
   --radius-pill:    999px;
   font-size: 16px;
@@ -77,12 +79,7 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
 }
 .nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
-.nav-logo-mark{
-  width:36px;height:36px;border-radius:10px;
-  background:var(--yum-dark-green);
-  display:grid;place-items:center;
-  font-family:'Maxi Round',sans-serif;font-size:1.1rem;font-weight:900;color:var(--yum-yellow);
-}
+.nav-logo img{height:36px;width:auto;display:block;}
 .nav-logo-text{font-family:'Maxi Round',sans-serif;font-size:1.2rem;font-weight:900;color:var(--yum-dark-green)}
 .nav-links{display:flex;align-items:center;gap:1.75rem}
 .nav-links a{text-decoration:none;font-size:.9rem;font-weight:600;color:var(--yum-muted);transition:color .2s}
@@ -153,17 +150,16 @@ nav{
 .btn-ghost:hover{border-color:rgba(255,255,255,.6)}
 
 .hero-phones{
-  display:flex;gap:1.2rem;align-items:flex-end;justify-content:center;
+  display:flex;gap:1.5rem;align-items:flex-end;justify-content:center;
   padding-bottom:0;
 }
 .phone-frame{
-  width:175px;border-radius:28px;overflow:hidden;
+  width:240px;border-radius:32px;overflow:hidden;
   box-shadow:0 30px 80px rgba(0,0,0,.45);
-  border:3px solid rgba(255,255,255,.12);
+  border:3px solid rgba(255,255,255,.15);
   background:#111;flex-shrink:0;
 }
 .phone-frame img{width:100%;display:block}
-.phone-frame.tall{transform:translateY(-24px)}
 
 /* ── Ticker ─────────────────────────────────────── */
 .ticker-wrap{
@@ -255,18 +251,18 @@ nav{
 .phone-panel{
   position:relative;display:flex;
   justify-content:center;align-items:flex-end;
-  gap:1rem;
+  gap:1.5rem;
 }
 .phone-panel .phone{
-  width:200px;border-radius:28px;overflow:hidden;
+  width:260px;border-radius:32px;overflow:hidden;
   box-shadow:0 24px 60px rgba(43,74,58,.2);
   border:3px solid rgba(43,74,58,.12);background:#f0f0f0;
   flex-shrink:0;
 }
 .phone-panel .phone img{width:100%;display:block}
 .phone-panel .phone.behind{
-  width:175px;transform:translateY(30px);
-  opacity:.75;
+  width:260px;transform:none;
+  opacity:1;
 }
 .uc-bg-blob{
   position:absolute;border-radius:50%;pointer-events:none;z-index:0;
@@ -428,8 +424,7 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
 <nav>
   <div class="nav-inner">
     <a href="#top" class="nav-logo">
-      <div class="nav-logo-mark">Y</div>
-      <span class="nav-logo-text">Yum Lab</span>
+      <img src="images/logo.png" alt="Yum Lab" />
     </a>
     <div class="nav-links">
       <a href="#why">Why</a>
@@ -437,7 +432,7 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
       <a href="#ai-features">AI Features</a>
       <a href="#branding">Branding</a>
     </div>
-    <a href="#closing" class="nav-cta">Join Waitlist</a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
   </div>
 </nav>
 
@@ -465,7 +460,7 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
         <div class="phone-frame">
           <img src="images/screen-home.png" style="width:100%;display:block;" alt="Home screen"/>
         </div>
-        <div class="phone-frame tall">
+        <div class="phone-frame">
           <img src="images/screen-profile.png" style="width:100%;display:block;" alt="Chef profile screen"/>
         </div>
         <div class="phone-frame">
@@ -704,19 +699,19 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
     <!-- AI screen mockups -->
     <div class="phone-panel fade-up" style="margin-top:4rem;justify-content:center;gap:2.5rem;position:relative">
       <div style="text-align:center">
-        <div class="phone" style="width:220px;margin:0 auto;">
+        <div class="phone" style="width:260px;margin:0 auto;">
           <img src="images/screen-ai-assistant.png" style="width:100%;display:block;" alt="AI voice assistant screen"/>
         </div>
         <p style="margin-top:1.25rem;font-family:'Maxi Round',sans-serif;font-weight:700;font-size:.9rem;color:rgba(255,255,255,.7);letter-spacing:.05em">🎙️ Voice Assistant</p>
       </div>
       <div style="text-align:center">
-        <div class="phone" style="width:220px;margin:0 auto;transform:translateY(-20px);">
+        <div class="phone" style="width:260px;margin:0 auto;">
           <img src="images/screen-photo-match.png" style="width:100%;display:block;" alt="Photo match screen"/>
         </div>
         <p style="margin-top:1.25rem;font-family:'Maxi Round',sans-serif;font-weight:700;font-size:.9rem;color:rgba(255,255,255,.7);letter-spacing:.05em">📸 Photo Recognition</p>
       </div>
       <div style="text-align:center">
-        <div class="phone" style="width:220px;margin:0 auto;">
+        <div class="phone" style="width:260px;margin:0 auto;">
           <img src="images/screen-video-guide.png" style="width:100%;display:block;" alt="Video guide screen"/>
         </div>
         <p style="margin-top:1.25rem;font-family:'Maxi Round',sans-serif;font-weight:700;font-size:.9rem;color:rgba(255,255,255,.7);letter-spacing:.05em">🎬 Safety Video Guide</p>
@@ -764,7 +759,6 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
       <div class="showcase-phone"><img src="images/screen-video-guide.png" style="width:100%;display:block;" alt="Video Guide"/></div>
     </div>
   </div>
-  <p style="text-align:center;margin-top:1.25rem;font-size:.85rem;color:var(--yum-muted);font-style:italic">Screen placeholders — swap with real UI mockups before launch</p>
 </section>
 
 <!-- ══════════════════════════════════════════════
@@ -784,38 +778,30 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
         <div class="color-swatches">
           <div class="swatch-row">
             <div class="swatch">
-              <div class="swatch-block" style="background:#2B4A3A"></div>
-              <span>Dark Green</span><span style="font-size:.65rem">#2B4A3A</span>
+              <div class="swatch-block" style="background:#26471E"></div>
+              <span>Forest Green</span><span style="font-size:.65rem">#26471E</span>
             </div>
             <div class="swatch">
-              <div class="swatch-block" style="background:#3D6B52"></div>
-              <span>Yum Green</span><span style="font-size:.65rem">#3D6B52</span>
+              <div class="swatch-block" style="background:#B1EAC4"></div>
+              <span>Mint</span><span style="font-size:.65rem">#B1EAC4</span>
             </div>
             <div class="swatch">
-              <div class="swatch-block" style="background:#B8DDD0"></div>
-              <span>Mint</span><span style="font-size:.65rem">#B8DDD0</span>
-            </div>
-            <div class="swatch">
-              <div class="swatch-block" style="background:#E8F0EB"></div>
-              <span>Light Green</span><span style="font-size:.65rem">#E8F0EB</span>
+              <div class="swatch-block" style="background:#FCEE85"></div>
+              <span>Lemon</span><span style="font-size:.65rem">#FCEE85</span>
             </div>
           </div>
           <div class="swatch-row">
             <div class="swatch">
-              <div class="swatch-block" style="background:#F5C842"></div>
-              <span>Yum Yellow</span><span style="font-size:.65rem">#F5C842</span>
+              <div class="swatch-block" style="background:#FFB288"></div>
+              <span>Peach</span><span style="font-size:.65rem">#FFB288</span>
             </div>
             <div class="swatch">
-              <div class="swatch-block" style="background:#F0845A"></div>
-              <span>Warm Orange</span><span style="font-size:.65rem">#F0845A</span>
+              <div class="swatch-block" style="background:#FF6A52"></div>
+              <span>Coral</span><span style="font-size:.65rem">#FF6A52</span>
             </div>
             <div class="swatch">
-              <div class="swatch-block" style="background:#FAD9C8"></div>
-              <span>Peach</span><span style="font-size:.65rem">#FAD9C8</span>
-            </div>
-            <div class="swatch">
-              <div class="swatch-block" style="background:#FBF7EF"></div>
-              <span>Cream</span><span style="font-size:.65rem">#FBF7EF</span>
+              <div class="swatch-block" style="background:#B5D5FF"></div>
+              <span>Sky Blue</span><span style="font-size:.65rem">#B5D5FF</span>
             </div>
           </div>
         </div>
@@ -824,20 +810,24 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
           <h4 class="h4" style="margin-bottom:1rem;font-family:'Maxi Round',sans-serif">Usage Principles</h4>
           <div style="display:flex;flex-direction:column;gap:.6rem">
             <div style="display:flex;gap:.75rem;align-items:center">
-              <div style="width:12px;height:12px;border-radius:50%;background:#2B4A3A;flex-shrink:0"></div>
-              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Dark Green</strong> — primary backgrounds, nav, CTAs</p>
+              <div style="width:12px;height:12px;border-radius:50%;background:#26471E;flex-shrink:0"></div>
+              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Forest Green</strong> — primary backgrounds, nav, CTAs</p>
             </div>
             <div style="display:flex;gap:.75rem;align-items:center">
-              <div style="width:12px;height:12px;border-radius:50%;background:#F5C842;flex-shrink:0"></div>
-              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Yellow</strong> — highlights, primary action buttons</p>
+              <div style="width:12px;height:12px;border-radius:50%;background:#FCEE85;flex-shrink:0"></div>
+              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Lemon</strong> — highlights, primary action buttons</p>
             </div>
             <div style="display:flex;gap:.75rem;align-items:center">
-              <div style="width:12px;height:12px;border-radius:50%;background:#F0845A;flex-shrink:0"></div>
-              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Orange</strong> — e-commerce, shopping, payment flows</p>
+              <div style="width:12px;height:12px;border-radius:50%;background:#FF6A52;flex-shrink:0"></div>
+              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Coral</strong> — e-commerce, shopping, payment flows</p>
             </div>
             <div style="display:flex;gap:.75rem;align-items:center">
-              <div style="width:12px;height:12px;border-radius:50%;background:#B8DDD0;flex-shrink:0"></div>
+              <div style="width:12px;height:12px;border-radius:50%;background:#B1EAC4;flex-shrink:0"></div>
               <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Mint</strong> — community, social, skill progression</p>
+            </div>
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <div style="width:12px;height:12px;border-radius:50%;background:#B5D5FF;flex-shrink:0"></div>
+              <p style="font-size:.9rem;color:var(--yum-muted)"><strong style="color:var(--yum-text)">Sky Blue</strong> — AI features, tech highlights</p>
             </div>
           </div>
         </div>
@@ -871,14 +861,74 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
 </section>
 
 <!-- ══════════════════════════════════════════════
-     9. CLOSING
+     9. CLOSING + CONTACT
 ══════════════════════════════════════════════ -->
 <section id="closing">
   <div class="container">
     <div class="fade-up">
       <h2 class="display h2">Every great chef<br>started with<br><em>a first recipe.</em></h2>
-      <p>Yum Lab is where that story begins. Join the waitlist and be first to know when we launch.</p>
-      <a href="#top" class="back-top">↑ Back to top</a>
+      <p>Yum Lab is where that story begins.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CONTACT FORM
+══════════════════════════════════════════════ -->
+<section id="contact" style="background:var(--yum-cream);padding:clamp(4rem,8vw,7rem) 0;">
+  <div class="container">
+    <div class="section-header fade-up" style="margin-bottom:2.5rem">
+      <span class="section-label">Get in touch</span>
+      <h2 class="display h2">Let's cook up<br>something together.</h2>
+      <p>Have a question, a partnership idea, or just want to say hi? We'd love to hear from you.</p>
+    </div>
+
+    <div style="max-width:620px;margin:0 auto;" class="fade-up">
+      <form id="contact-form" action="https://formsubmit.co/zhengalice7@gmail.com" method="POST" style="display:flex;flex-direction:column;gap:1.25rem;">
+        <!-- Disable captcha, set subject, redirect back to same page -->
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_subject" value="Yum Lab Website Enquiry"/>
+        <input type="hidden" name="_next" value="https://yumlab.com/#contact"/>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+          <div>
+            <label style="display:block;font-size:.85rem;font-weight:600;color:var(--yum-text);margin-bottom:.4rem;">Name</label>
+            <input type="text" name="name" required placeholder="Your name"
+              style="width:100%;padding:.85rem 1.1rem;border-radius:14px;border:1.5px solid rgba(38,71,30,.2);background:var(--yum-white);font-family:'Apercu',sans-serif;font-size:1rem;color:var(--yum-text);outline:none;transition:border-color .2s;"
+              onfocus="this.style.borderColor='#26471E'" onblur="this.style.borderColor='rgba(38,71,30,.2)'"/>
+          </div>
+          <div>
+            <label style="display:block;font-size:.85rem;font-weight:600;color:var(--yum-text);margin-bottom:.4rem;">Email</label>
+            <input type="email" name="email" required placeholder="your@email.com"
+              style="width:100%;padding:.85rem 1.1rem;border-radius:14px;border:1.5px solid rgba(38,71,30,.2);background:var(--yum-white);font-family:'Apercu',sans-serif;font-size:1rem;color:var(--yum-text);outline:none;transition:border-color .2s;"
+              onfocus="this.style.borderColor='#26471E'" onblur="this.style.borderColor='rgba(38,71,30,.2)'"/>
+          </div>
+        </div>
+
+        <div>
+          <label style="display:block;font-size:.85rem;font-weight:600;color:var(--yum-text);margin-bottom:.4rem;">Subject</label>
+          <input type="text" name="subject" placeholder="What's this about?"
+            style="width:100%;padding:.85rem 1.1rem;border-radius:14px;border:1.5px solid rgba(38,71,30,.2);background:var(--yum-white);font-family:'Apercu',sans-serif;font-size:1rem;color:var(--yum-text);outline:none;transition:border-color .2s;"
+            onfocus="this.style.borderColor='#26471E'" onblur="this.style.borderColor='rgba(38,71,30,.2)'"/>
+        </div>
+
+        <div>
+          <label style="display:block;font-size:.85rem;font-weight:600;color:var(--yum-text);margin-bottom:.4rem;">Message</label>
+          <textarea name="message" required rows="5" placeholder="Tell us what's on your mind..."
+            style="width:100%;padding:.85rem 1.1rem;border-radius:14px;border:1.5px solid rgba(38,71,30,.2);background:var(--yum-white);font-family:'Apercu',sans-serif;font-size:1rem;color:var(--yum-text);outline:none;resize:vertical;transition:border-color .2s;"
+            onfocus="this.style.borderColor='#26471E'" onblur="this.style.borderColor='rgba(38,71,30,.2)'"></textarea>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:.5rem">
+          <button type="submit"
+            style="background:var(--yum-dark-green);color:var(--yum-yellow);font-family:'Maxi Round',sans-serif;font-weight:800;font-size:1rem;padding:.85rem 2.5rem;border-radius:var(--radius-pill);border:none;cursor:pointer;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(38,71,30,.25);"
+            onmouseover="this.style.opacity='.85';this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.opacity='1';this.style.transform='none'">
+            Send Message ✉️
+          </button>
+          <a href="#top" class="back-top">↑ Back to top</a>
+        </div>
+      </form>
     </div>
   </div>
 </section>
