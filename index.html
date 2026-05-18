@@ -423,20 +423,127 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
 .section-header p{color:var(--yum-muted);font-size:1.05rem;line-height:1.7}
 
 /* ── Responsive ─────────────────────────────────── */
+
+/* ── Tablet landscape: 900–1100px ───────────────── */
+@media(max-width:1100px){
+  .hero-copy h1{font-size:clamp(1.8rem,4.5vw,3.8rem)}
+  .phone-frame{width:clamp(160px,18vw,260px);border-radius:26px}
+  .phone-panel .phone,
+  .phone-panel .phone.behind{width:220px;border-radius:26px}
+}
+
+/* ── Tablet portrait: 600–900px ─────────────────── */
 @media(max-width:900px){
-  .uc-inner,.brand-grid{grid-template-columns:1fr}
-  .uc-inner.reverse{direction:ltr}
-  .why-grid,.stat-row,.ai-grid{grid-template-columns:1fr 1fr}
-  .phone-panel{justify-content:center}
-  .hero-copy h1{white-space:normal;font-size:clamp(1.8rem,5vw,3rem)}
-}
-@media(max-width:600px){
-  .why-grid,.stat-row,.ai-grid{grid-template-columns:1fr}
+
+  /* Nav */
   .nav-links{display:none}
-  .hero-phones{gap:.75rem}
-  .phone-frame{width:clamp(100px,28vw,160px)}
-  .hero-copy h1{white-space:normal}
+
+  /* Hero */
+  .hero-copy h1{white-space:normal;font-size:clamp(1.8rem,5vw,3rem);text-align:center}
+  .hero-phones{gap:1rem}
+  .phone-frame{width:clamp(130px,22vw,200px);border-radius:22px}
+  .phone-frame.center{transform:translateY(-16px)}
+
+  /* Sections */
+  .uc-inner{grid-template-columns:1fr;gap:2.5rem}
+  .uc-inner.reverse{direction:ltr}
+  .uc-copy{text-align:left}
+  .phone-panel{justify-content:center}
+  .phone-panel .phone,
+  .phone-panel .phone.behind{width:200px;border-radius:22px}
+
+  /* Grids */
+  .why-grid{grid-template-columns:1fr 1fr;gap:1rem}
+  .stat-row{grid-template-columns:1fr 1fr 1fr}
+  .ai-grid{grid-template-columns:1fr 1fr;gap:1rem}
+
+  /* Branding */
+  .brand-grid{grid-template-columns:1fr;gap:2rem}
+
+  /* Contact form name/email row */
+  .contact-row{grid-template-columns:1fr !important}
+
+  /* AI phone row — 2 columns on tablet, third wraps */
+  #ai-features .phone-panel{flex-wrap:wrap;gap:2rem}
+  #ai-features .phone-panel > div{flex:1 1 calc(50% - 1rem)}
+
+  /* Footer */
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:.75rem}
 }
+
+/* ── Mobile: max 600px ───────────────────────────── */
+@media(max-width:600px){
+
+  /* Nav */
+  .nav-links{display:none}
+  .nav-cta{font-size:.8rem;padding:.45rem 1rem}
+
+  /* Hero */
+  .hero-copy h1{white-space:normal;font-size:clamp(1.6rem,7vw,2.4rem)}
+  .hero-copy p{font-size:1rem}
+  .hero-btns{flex-direction:column;align-items:center}
+  .hero-phones{gap:.75rem;justify-content:center}
+  .phone-frame{width:clamp(110px,30vw,160px);border-radius:16px}
+  .phone-frame.center{transform:translateY(-12px)}
+
+  /* Ticker */
+  .ticker-track span{font-size:.82rem;padding:0 1.2rem}
+
+  /* Sections */
+  .section{padding:3.5rem 0}
+  .section-header{margin-bottom:2rem}
+  .section-header h2{font-size:clamp(1.6rem,6vw,2.2rem)}
+
+  /* Use cases */
+  .uc-inner{gap:2rem}
+  .uc-copy h2{font-size:clamp(1.5rem,6vw,2rem)}
+  .phone-panel{gap:1rem}
+  .phone-panel .phone,
+  .phone-panel .phone.behind{width:clamp(140px,40vw,180px);border-radius:16px}
+  .step{padding:.85rem 1rem}
+
+  /* Why cards */
+  .why-grid{grid-template-columns:1fr;gap:1rem}
+  .stat-row{grid-template-columns:1fr;gap:1rem}
+  .stat-box .num{font-size:2.4rem}
+
+  /* AI features */
+  .ai-grid{grid-template-columns:1fr;gap:1rem}
+  #ai-features .phone-panel{flex-direction:column;align-items:center;gap:2rem}
+  #ai-features .phone-panel > div{width:100%;max-width:260px}
+  #ai-features .phone-panel .phone{width:100% !important;border-radius:16px !important}
+
+  /* Branding */
+  .swatch-row{gap:.5rem}
+  .swatch-block{width:56px;height:56px}
+  .font-sample-display{font-size:1.8rem}
+
+  /* Contact */
+  div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr !important;
+  }
+
+  /* Closing illustration */
+  #closing img{height:140px !important}
+
+  /* Closing */
+  #closing h2{font-size:clamp(1.8rem,7vw,2.8rem)}
+
+  /* Footer */
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .footer-links{flex-wrap:wrap;gap:1rem}
+}
+
+/* ── Mobile menu button ──────────────────────────── */
+@media(max-width:900px){
+  #menu-btn{display:block !important}
+}
+.mobile-nav-link{
+  font-family:'Maxi Round',sans-serif;font-weight:800;font-size:1.75rem;
+  color:white;text-decoration:none;letter-spacing:-.01em;
+  transition:color .2s;
+}
+.mobile-nav-link:hover{color:var(--yum-yellow)}
 
 /* ── Fade-in on scroll ──────────────────────────── */
 .fade-up{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
@@ -457,7 +564,15 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
       <a href="#ai-features">AI Features</a>
       <a href="#branding">Branding</a>
     </div>
-    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+      <button id="menu-btn" aria-label="Open menu"
+        style="display:none;background:none;border:none;cursor:pointer;padding:.4rem;color:var(--yum-dark-green)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -510,6 +625,38 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
       <span>Join a community of young chefs</span>
       <span>AI voice assistant, hands-free</span>
       <span>Learn end-to-end kitchen skills</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     1.5 VIDEO — SEE IT IN ACTION
+══════════════════════════════════════════════ -->
+<section id="video" style="background:var(--yum-dark-green);padding:clamp(4rem,8vw,7rem) 0;">
+  <div class="container">
+    <div class="section-header fade-up" style="margin-bottom:2.5rem">
+      <span class="section-label" style="color:var(--yum-yellow)">See it in action</span>
+      <h2 class="display h2" style="color:var(--yum-white)">Watch how Yum Lab<br>works.</h2>
+      <p style="color:rgba(255,255,255,.65)">A full walkthrough of the app concept — from exploring your fridge to building your skill tree.</p>
+    </div>
+    <div class="fade-up" style="
+      max-width:860px;
+      margin:0 auto;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 32px 80px rgba(0,0,0,.45);
+      border:2px solid rgba(255,255,255,.1);
+      aspect-ratio:16/9;
+      position:relative;
+    ">
+      <iframe
+        src="https://www.youtube.com/embed/n44BZFZ3sKw"
+        title="Yum Lab — App Introduction"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="position:absolute;inset:0;width:100%;height:100%;border:none;">
+      </iframe>
     </div>
   </div>
 </section>
@@ -891,6 +1038,9 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
 <section id="closing">
   <div class="container">
     <div class="fade-up">
+      <img src="images/illustration_1.png"
+        alt="Yum Lab illustration"
+        style="height:200px;width:auto;display:block;margin:0 auto 2rem;object-fit:contain;"/>
       <h2 class="display h2">Every great chef<br>started with<br><em>a first recipe.</em></h2>
       <p>Yum Lab is where that story begins.</p>
     </div>
@@ -970,12 +1120,41 @@ footer p{font-size:.85rem;color:rgba(255,255,255,.35)}
   </div>
 </footer>
 
+<!-- Mobile nav drawer -->
+<div id="mobile-menu" style="
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(26,48,40,.97);
+  flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+">
+  <button id="menu-close" aria-label="Close menu"
+    style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;cursor:pointer;color:white;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <a href="#why" class="mobile-nav-link">Why Yum Lab</a>
+  <a href="#use-case-1" class="mobile-nav-link">Use Cases</a>
+  <a href="#ai-features" class="mobile-nav-link">AI Features</a>
+  <a href="#branding" class="mobile-nav-link">Branding</a>
+  <a href="#contact" class="mobile-nav-link" style="color:var(--yum-yellow)">Get in Touch</a>
+</div>
+
 <script>
 // Fade-in on scroll
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
 }, {threshold: 0.12});
 document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Mobile menu
+const menuBtn   = document.getElementById('menu-btn');
+const menuClose = document.getElementById('menu-close');
+const mobileMenu = document.getElementById('mobile-menu');
+function openMenu(){ mobileMenu.style.display='flex'; document.body.style.overflow='hidden'; }
+function closeMenu(){ mobileMenu.style.display='none'; document.body.style.overflow=''; }
+menuBtn.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 </script>
 </body>
 </html>
